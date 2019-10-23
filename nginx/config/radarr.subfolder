@@ -1,4 +1,4 @@
-location ^~ /radarr {
+location ^~ /movies {
     # enable the next two lines for http auth
     #auth_basic "Restricted";
     #auth_basic_user_file /config/nginx/.htpasswd;
@@ -12,7 +12,7 @@ location ^~ /radarr {
     proxy_pass http://radarr;
 }
 
-location ^~ /radarr/api {
+location ^~ /movies/api {
     include /config/nginx/proxy.conf;
     resolver 127.0.0.11 valid=30s;
     proxy_pass http://radarr;
