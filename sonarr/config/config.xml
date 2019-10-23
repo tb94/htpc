@@ -1,0 +1,15 @@
+<Config>
+  <LogLevel>Trace</LogLevel>
+  <Port>8989</Port>
+  <UrlBase></UrlBase>
+  <BindAddress>*</BindAddress>
+  <SslPort>9898</SslPort>
+  <EnableSsl>False</EnableSsl>
+  <ApiKey>52844b79eb6c4f9d992ee37d5bf3bf5a</ApiKey>
+  <AuthenticationMethod>None</AuthenticationMethod>
+  <Branch>master</Branch>
+  <LaunchBrowser>False</LaunchBrowser>
+  <SslCertHash></SslCertHash>
+  <UpdateMechanism>BuiltIn</UpdateMechanism>
+  <UpdateAutomatically>True</UpdateAutomatically>
+</Config>

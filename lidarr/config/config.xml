@@ -1,0 +1,15 @@
+<Config>
+  <LogLevel>Info</LogLevel>
+  <EnableSsl>False</EnableSsl>
+  <Port>8686</Port>
+  <SslPort>6868</SslPort>
+  <UrlBase></UrlBase>
+  <BindAddress>*</BindAddress>
+  <ApiKey>1f80192a17f24d11aa86a2994aab3384</ApiKey>
+  <AuthenticationMethod>None</AuthenticationMethod>
+  <Branch>develop</Branch>
+  <LaunchBrowser>True</LaunchBrowser>
+  <SslCertHash></SslCertHash>
+  <UpdateMechanism>BuiltIn</UpdateMechanism>
+  <AnalyticsEnabled>False</AnalyticsEnabled>
+</Config>

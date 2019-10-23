@@ -18,3 +18,10 @@ transmission/downloads/*
 transmission/watch/*
 
 gui/node_modules/
+
+
+!jackett/config/Jackett/ServerConfig.json
+!radarr/config/config.xml
+!sonarr/config/config.xml
+!lidarr/config/config.xml
+!transmission/config/settings.json
