@@ -1,0 +1,120 @@
+version: '2.0'
+services:
+
+  plex:
+    container_name: plex
+    image: linuxserver/plex:latest
+    restart: on-failure
+    network_mode: host
+    environment:
+      - PGID=1001
+      - PUID=1000
+      - TZ=America/Chicago
+    volumes:
+      - ./plex/config:/config
+      - ./sonarr/tv:/data/tvshows
+      - ./radarr/movies:/data/movies
+      - ./lidarr/music:/data/music
+      - ./plex/transcode:/transcode
+
+  transmission:
+    container_name: transmission
+    image: linuxserver/transmission:latest
+    restart: on-failure
+    network_mode: host
+    environment:
+      - PGID=1001
+      - PUID=1000
+      - TZ=America/Chicago
+    volumes:
+      - ./transmission/config:/config
+      - ./transmission/downloads:/downloads
+      - ./transmission/watch:/watch
+
+  jackett:
+    container_name: jackett
+    image: linuxserver/jackett:latest
+    restart: on-failure
+    network_mode: host
+    environment:
+      - PGID=1001
+      - PUID=1000
+      - TZ=America/Chicago
+    volumes:
+      - ./jackett/config:/config
+      - ./jackett/downloads:/downloads
+
+  sonarr:
+    container_name: sonarr
+    image: linuxserver/sonarr:latest
+    restart: on-failure
+    network_mode: host
+    depends_on:
+      - transmission
+      - jackett
+    environment:
+      - PGID=1001
+      - PUID=1000
+      - TZ=America/Chicago
+    volumes:
+      - ./sonarr/config:/config
+      - ./sonarr/tv:/tv
+      - ./transmission/downloads:/downloads
+
+  radarr:
+    container_name: radarr
+    image: linuxserver/radarr:latest
+    restart: on-failure
+    network_mode: host
+    depends_on:
+      - transmission
+      - jackett
+    environment:
+      - PGID=1001
+      - PUID=1000
+      - TZ=America/Chicago
+    volumes:
+      - ./radarr/config:/config
+      - ./radarr/movies:/movies
+      - ./transmission/downloads:/downloads
+
+  lidarr:
+    container_name: lidarr
+    image: linuxserver/lidarr:latest
+    restart: on-failure
+    network_mode: host
+    depends_on:
+      - transmission
+      - jackett
+    environment:
+      - PGID=1001
+      - PUID=1000
+      - TZ=America/Chicago
+    volumes:
+      - ./lidarr/config:/config
+      - ./lidarr/music:/music
+      - ./transmission/downloads:/downloads
+
+  gui:
+    container_name: gui
+    image: node:10
+    working_dir: /usr/src/app
+    restart: on-failure
+    network_mode: host
+    environment:
+      NODE_ENV: development
+    command: npm start
+    volumes:
+      - ./gui:/usr/src/app
+
+  nginx:
+    container_name: nginx
+    image: nginx
+    restart: on-failure
+    network_mode: host
+    environment:
+      - NGINX_PORT=80
+      - NGINX_HOST=10.0.0.3
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    command: /bin/bash -c "envsubst < /etc/nginx/conf.d/reverse_proxy.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
