@@ -80,24 +80,7 @@ services:
     ports:
       - 7878:7878
 
-#  lidarr:
-#    image: linuxserver/lidarr:latest
-#    restart: on-failure
-#    depends_on:
-#      - transmission
-#      - jackett
-#    environment:
-#      - PGID=${GID}
-#      - PUID=${UID}
-#      - TZ=America/Chicago
-#    volumes:
-#      - ./lidarr/config:/config
-#      - ./lidarr/music:/music
-#      - ./transmission/downloads:/downloads
-#    ports:
-#      - 8686:8686
-
-  gui:
+ gui:
     image: node:10
     working_dir: /usr/src/app
     restart: on-failure
