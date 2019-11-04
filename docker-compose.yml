@@ -80,7 +80,7 @@ services:
     ports:
       - 7878:7878
 
- gui:
+  gui:
     image: node:10
     working_dir: /usr/src/app
     restart: on-failure
