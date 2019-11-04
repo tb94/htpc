@@ -14,7 +14,6 @@ services:
       - ./plex/config:/config
       - ./sonarr/tv:/data/tvshows
       - ./radarr/movies:/data/movies
-      - ./lidarr/music:/data/music
       - ./plex/transcode:/transcode
 
   transmission:
@@ -101,7 +100,6 @@ services:
     depends_on:
       - radarr
       - sonarr
-      - lidarr
       - jackett
       - transmission
       - gui
