@@ -7,9 +7,10 @@
   <EnableSsl>False</EnableSsl>
   <ApiKey>d319f83deb924d98a597445c5ca1378e</ApiKey>
   <AuthenticationMethod>None</AuthenticationMethod>
-  <Branch>develop</Branch>
+  <Branch>master</Branch>
   <LaunchBrowser>False</LaunchBrowser>
-  <SslCertHash></SslCertHash>
-  <UpdateMechanism>BuiltIn</UpdateMechanism>
+  <UpdateMechanism>Docker</UpdateMechanism>
   <AnalyticsEnabled>False</AnalyticsEnabled>
+  <SslCertPath></SslCertPath>
+  <SslCertPassword></SslCertPassword>
 </Config>

@@ -10,7 +10,7 @@ location ^~ /downloads {
     include /config/nginx/proxy.conf;
     resolver 127.0.0.11 valid=30s;
     proxy_pass_header  X-Transmission-Session-Id;
-    proxy_pass http://transmission;
+    proxy_pass http://transmission/transmission/web/;
 }
 
 location ^~ /downloads/rpc {

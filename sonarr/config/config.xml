@@ -1,5 +1,5 @@
 <Config>
-  <LogLevel>Trace</LogLevel>
+  <LogLevel>info</LogLevel>
   <Port>8989</Port>
   <UrlBase>/tv</UrlBase>
   <BindAddress>*</BindAddress>
@@ -7,9 +7,10 @@
   <EnableSsl>False</EnableSsl>
   <ApiKey>52844b79eb6c4f9d992ee37d5bf3bf5a</ApiKey>
   <AuthenticationMethod>None</AuthenticationMethod>
-  <Branch>master</Branch>
+  <Branch>main</Branch>
   <LaunchBrowser>False</LaunchBrowser>
   <SslCertHash></SslCertHash>
-  <UpdateMechanism>BuiltIn</UpdateMechanism>
+  <UpdateMechanism>Docker</UpdateMechanism>
   <UpdateAutomatically>True</UpdateAutomatically>
+  <AnalyticsEnabled>False</AnalyticsEnabled>
 </Config>

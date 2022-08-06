@@ -1,11 +1,11 @@
 plex/transcode/*
 plex/config/*
 
-sonarr/config/*
-sonarr/tv/*
+sonarr/config
+sonarr/tv
 
-radarr/config/*
-radarr/movies/*
+radarr/config
+radarr/movies
 
 lidarr/config/*
 lidarr/music/*
@@ -14,7 +14,7 @@ jackett/config/*
 jackett/downloads/*
 
 transmission/config/*
-transmission/downloads/*
+transmission/downloads
 transmission/watch/*
 
 gui/node_modules/
