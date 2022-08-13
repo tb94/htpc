@@ -93,10 +93,10 @@ services:
       - PGID=${GID}
       - PUID=${UID}
       - TZ=America/Chicago
-      - DISCORD__TOKEN=MTAwODA0NzcwOTI2Mjk3NTAwOA.G3xsa5.E7bjlwnyGahfnBAkzFWx-qmVPtPX8pU9eZ9whQ
-      - RADARR__API=d319f83deb924d98a597445c5ca1378e
+      - DISCORD__TOKEN=${DISCORD_TOKEN}
+      - RADARR__API=${RADARR_API}
       - RADARR__URL=http://10.0.0.3/movies
-      - SONARR__API=52844b79eb6c4f9d992ee37d5bf3bf5a
+      - SONARR__API=${SONARR_API}
       - SONARR__URL=http://10.0.0.3/tv
     volumes:
       - ./doplarr/config:/config
