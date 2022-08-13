@@ -13,6 +13,8 @@ lidarr/music/*
 jackett/config/*
 jackett/downloads/*
 
+prowlarr/config
+
 transmission/config/*
 transmission/downloads
 transmission/watch/*
@@ -20,6 +22,7 @@ transmission/watch/*
 gui/node_modules/
 .env
 
+!prowlarr/config/config.xml
 !jackett/config/Jackett/ServerConfig.json
 !radarr/config/config.xml
 !sonarr/config/config.xml

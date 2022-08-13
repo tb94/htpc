@@ -1,4 +1,4 @@
-location /sources {
+location /prowlarr {
     # enable the next two lines for http auth
     #auth_basic "Restricted";
     #auth_basic_user_file /config/nginx/.htpasswd;
@@ -9,12 +9,12 @@ location /sources {
 
     include /config/nginx/proxy.conf;
     resolver 127.0.0.11 valid=30s;
-    proxy_pass http://jackett;
+    proxy_pass http://prowlarr;
 }
 
-location ~ /sources/(api|dl) {
+location ~ /prowlarr(/[0-9]+)?/api {
     include /config/nginx/proxy.conf;
     resolver 127.0.0.11 valid=30s;
-    proxy_pass http://jackett;
+    proxy_pass http://prowlarr;
 }
 

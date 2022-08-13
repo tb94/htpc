@@ -13,4 +13,5 @@
   <UpdateMechanism>Docker</UpdateMechanism>
   <UpdateAutomatically>True</UpdateAutomatically>
   <AnalyticsEnabled>False</AnalyticsEnabled>
+  <InstanceName>Sonarr</InstanceName>
 </Config>
