@@ -13,4 +13,5 @@
   <AnalyticsEnabled>False</AnalyticsEnabled>
   <SslCertPath></SslCertPath>
   <SslCertPassword></SslCertPassword>
+  <InstanceName>Radarr</InstanceName>
 </Config>

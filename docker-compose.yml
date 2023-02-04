@@ -6,9 +6,7 @@ services:
     image: lscr.io/linuxserver/plex
     restart: unless-stopped 
     network_mode: host
-#    runtime: nvidia
-    devices: 
-      - /dev/dri:/dev/dri
+    # runtime: nvidia
     environment:
       - VERSION=public
       - NVIDIA_VISIBLE_DEVICES=all
@@ -17,8 +15,8 @@ services:
       - TZ=America/Chicago
     volumes:
       - ./plex/config:/config
-      - ./sonarr/tv:/tv
-      - ./radarr/movies:/movies
+      - ${MEDIA_PATH}/tv:/tv
+      - ${MEDIA_PATH}/movies:/movies
       - ./plex/transcode:/transcode
 
   transmission:
@@ -30,7 +28,7 @@ services:
       - TZ=America/Chicago
     volumes:
       - ./transmission/config:/config
-      - ./transmission/downloads:/downloads
+      - ${MEDIA_PATH}/downloads:/data/downloads
       - ./transmission/watch:/watch
     ports:
       - 51413:51413
@@ -60,8 +58,7 @@ services:
       - TZ=America/Chicago
     volumes:
       - ./sonarr/config:/config
-      - ./sonarr/tv:/tv
-      - ./transmission/downloads:/downloads
+      - ${MEDIA_PATH}:/data
     ports:
       - 8989:8989
     links:
@@ -78,8 +75,7 @@ services:
       - TZ=America/Chicago
     volumes:
       - ./radarr/config:/config
-      - ./radarr/movies:/movies
-      - ./transmission/downloads:/downloads
+      - ${MEDIA_PATH}:/data
     ports:
       - 7878:7878
     links:
@@ -104,6 +100,9 @@ services:
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr
     environment:
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - LOG_HTML=${LOG_HTML:-false}
+      - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
       - TZ=America/Chicago
     ports:
       - 8191:8191
