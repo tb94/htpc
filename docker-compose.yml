@@ -116,8 +116,8 @@ services:
     image: lscr.io/linuxserver/mylar3
     container_name: mylar
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${UID}
+      - PGID=${GID}
       - TZ=America/Chicago
     volumes:
       - ./mylar/config:/config
@@ -167,7 +167,7 @@ services:
       URL: bretz.duckdns.org
       SUBDOMAINS: wildcard
       VALIDATION: duckdns
-      CERTPROVIDER: zerossl
+      CERTPROVIDER: letsencrypt
       DUCKDNSTOKEN: ${DUCK_TOKEN}
       EMAIL: timbretz94@gmail.com
     ports:
