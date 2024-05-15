@@ -6,7 +6,7 @@
   <SslPort>9898</SslPort>
   <EnableSsl>False</EnableSsl>
   <ApiKey>d319f83deb924d98a597445c5ca1378e</ApiKey>
-  <AuthenticationMethod>None</AuthenticationMethod>
+  <AuthenticationMethod>Basic</AuthenticationMethod>
   <Branch>master</Branch>
   <LaunchBrowser>False</LaunchBrowser>
   <UpdateMechanism>Docker</UpdateMechanism>
@@ -14,4 +14,6 @@
   <SslCertPath></SslCertPath>
   <SslCertPassword></SslCertPassword>
   <InstanceName>Radarr</InstanceName>
+  <AuthenticationRequired>DisabledForLocalAddresses</AuthenticationRequired>
+  <UpdateAutomatically>True</UpdateAutomatically>
 </Config>

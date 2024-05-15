@@ -19,6 +19,15 @@ transmission/config/*
 transmission/downloads
 transmission/watch/*
 
+kavita/config/*
+
+mylar/config/mylar/*
+mylar/config/scripts/*
+
+sabnzbd/config/*
+
+swag/*
+
 gui/node_modules/
 .env
 
@@ -28,3 +37,8 @@ gui/node_modules/
 !sonarr/config/config.xml
 !lidarr/config/config.xml
 !transmission/config/settings.json
+!kavita/config/bookmarks
+!kavita/config/appsettings.json
+!mylar/config/mylar/config.ini
+!sabnzbd/config/sabnzbd.ini*
+!swag/nginx
