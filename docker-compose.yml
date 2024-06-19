@@ -122,6 +122,7 @@ services:
     volumes:
       - ./mylar/config:/config
       - ${MEDIA_PATH}:/data
+      - /home/tim/comics:/opt
     ports:
       - 8090:8090
     restart: unless-stopped
@@ -164,12 +165,11 @@ services:
       PUID: ${UID}
       PGID: ${GID}
       TZ: America/Chicago
-      URL: bretz.duckdns.org
+      URL: timbr94.win
       SUBDOMAINS: wildcard
-      VALIDATION: duckdns
+      VALIDATION: dns
+      DNSPLUGIN: cloudflare
       CERTPROVIDER: letsencrypt
-      DUCKDNSTOKEN: ${DUCK_TOKEN}
-      EMAIL: timbretz94@gmail.com
     ports:
       - 80:80
       - 443:443

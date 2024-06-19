@@ -27,6 +27,7 @@ mylar/config/scripts/*
 sabnzbd/config/*
 
 swag/*
+swag/nginx/proxy-confs/*.sample
 
 gui/node_modules/
 .env
