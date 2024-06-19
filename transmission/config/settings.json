@@ -50,7 +50,7 @@
     "rpc-enabled": true,
     "rpc-host-whitelist": "",
     "rpc-host-whitelist-enabled": false,
-    "rpc-password": "{96353d26b0052668d6216875c4e107da9fb8b740Mk.kzWdv",
+    "rpc-password": "{195b0767f108c95890a00673bb6b3f934232cfe9LQR0s4yc",
     "rpc-port": 9091,
     "rpc-socket-mode": "0750",
     "rpc-url": "/transmission/",
