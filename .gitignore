@@ -1,11 +1,13 @@
+**/*.sample
+
 plex/transcode/*
 plex/config/*
 
-sonarr/config
-sonarr/tv
+sonarr/config/*
+sonarr/tv/*
 
-radarr/config
-radarr/movies
+radarr/config/*
+radarr/movies/*
 
 lidarr/config/*
 lidarr/music/*
@@ -13,10 +15,10 @@ lidarr/music/*
 jackett/config/*
 jackett/downloads/*
 
-prowlarr/config
+prowlarr/config/*
 
 transmission/config/*
-transmission/downloads
+transmission/downloads/*
 transmission/watch/*
 
 kavita/config/*
@@ -31,8 +33,6 @@ swag/*
 gui/node_modules/
 .env
 
-# **/*.sample
-
 !prowlarr/config/config.xml
 !jackett/config/Jackett/ServerConfig.json
 !radarr/config/config.xml
@@ -43,3 +43,5 @@ gui/node_modules/
 !mylar/config/mylar/config.ini
 !sabnzbd/config/sabnzbd.ini*
 !swag/nginx
+
+swag/nginx/**/*.sample

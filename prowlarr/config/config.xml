@@ -1,0 +1,19 @@
+<Config>
+  <LogLevel>info</LogLevel>
+  <UrlBase>/prowlarr</UrlBase>
+  <UpdateMechanism>Docker</UpdateMechanism>
+  <BindAddress>*</BindAddress>
+  <Port>9696</Port>
+  <SslPort>6969</SslPort>
+  <EnableSsl>False</EnableSsl>
+  <LaunchBrowser>True</LaunchBrowser>
+  <ApiKey>f5d707db27064ec4a79c26c66d2b64c0</ApiKey>
+  <AuthenticationMethod>forms</AuthenticationMethod>
+  <Branch>develop</Branch>
+  <SslCertPath></SslCertPath>
+  <SslCertPassword></SslCertPassword>
+  <InstanceName>Prowlarr</InstanceName>
+  <Theme>dark</Theme>
+  <UpdateAutomatically>True</UpdateAutomatically>
+  <AuthenticationRequired>DisabledForLocalAddresses</AuthenticationRequired>
+</Config>
