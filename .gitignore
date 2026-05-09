@@ -27,10 +27,11 @@ mylar/config/scripts/*
 sabnzbd/config/*
 
 swag/*
-swag/nginx/proxy-confs/*.sample
 
 gui/node_modules/
 .env
+
+# **/*.sample
 
 !prowlarr/config/config.xml
 !jackett/config/Jackett/ServerConfig.json
@@ -38,7 +39,6 @@ gui/node_modules/
 !sonarr/config/config.xml
 !lidarr/config/config.xml
 !transmission/config/settings.json
-!kavita/config/bookmarks
 !kavita/config/appsettings.json
 !mylar/config/mylar/config.ini
 !sabnzbd/config/sabnzbd.ini*

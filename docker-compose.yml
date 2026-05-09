@@ -3,7 +3,7 @@ services:
   plex:
     image: lscr.io/linuxserver/plex
     container_name: plex
-    restart: unless-stopped 
+    restart: unless-stopped
     network_mode: host
     # runtime: nvidia
     environment:
@@ -21,7 +21,7 @@ services:
   transmission:
     image: lscr.io/linuxserver/transmission
     container_name: transmission
-    restart: unless-stopped 
+    restart: unless-stopped
     environment:
       - PGID=${GID}
       - PUID=${UID}
@@ -65,7 +65,7 @@ services:
   sonarr:
     image: lscr.io/linuxserver/sonarr
     container_name: sonarr
-    restart: unless-stopped 
+    restart: unless-stopped
     depends_on:
       - transmission
     environment:
@@ -83,7 +83,7 @@ services:
   radarr:
     image: lscr.io/linuxserver/radarr
     container_name: radarr
-    restart: unless-stopped 
+    restart: unless-stopped
     depends_on:
       - transmission
     environment:
@@ -138,9 +138,12 @@ services:
       - TZ=America/Chicago
       - DISCORD__TOKEN=${DISCORD_TOKEN}
       - RADARR__API=${RADARR_API}
-      - RADARR__URL=http://10.0.0.3/movies
+      - RADARR__URL=https://internal.${HOST}/movies
       - SONARR__API=${SONARR_API}
-      - SONARR__URL=http://10.0.0.3/tv
+      - SONARR__URL=https://internal.${HOST}/tv
+      - DISCORD__REQUESTED_MSG_STYLE=:embed
+      - SONARR__QUALITY_PROFILE=Best
+      - RADARR__QUALITY_PROFILE=Best
     volumes:
       - ./doplarr/config:/config
 
@@ -154,8 +157,7 @@ services:
       - TZ=America/Chicago
     ports:
       - 8191:8191
-    restart:
-      unless-stopped
+    restart: unless-stopped
 
   swag:
     image: lscr.io/linuxserver/swag
@@ -165,7 +167,7 @@ services:
       PUID: ${UID}
       PGID: ${GID}
       TZ: America/Chicago
-      URL: timbr94.win
+      URL: ${HOST}
       SUBDOMAINS: wildcard
       VALIDATION: dns
       DNSPLUGIN: cloudflare
@@ -175,7 +177,6 @@ services:
       - 443:443
     volumes:
       - ./swag:/config
-
   #  gui:
   #    image: node:10
   #    working_dir: /usr/src/app
@@ -187,7 +188,7 @@ services:
   #      - ./gui:/usr/src/app
   #    ports:
   #      - 8080:8080  
-  
+
   #nginx:
   # image: nginx
   # restart: unless-stopped 
