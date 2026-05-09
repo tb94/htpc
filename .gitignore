@@ -42,6 +42,8 @@ gui/node_modules/
 !kavita/config/appsettings.json
 !mylar/config/mylar/config.ini
 !sabnzbd/config/sabnzbd.ini*
+!swag/swag.env
 !swag/nginx
-
 swag/nginx/**/*.sample
+
+!.env.sample

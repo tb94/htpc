@@ -6,12 +6,9 @@ services:
     restart: unless-stopped
     network_mode: host
     # runtime: nvidia
-    environment:
-      - VERSION=public
-      - NVIDIA_VISIBLE_DEVICES=all
-      - PGID=${GID}
-      - PUID=${UID}
-      - TZ=America/Chicago
+    env_file:
+      - ./base.env
+      - ./plex/plex.env
     volumes:
       - ./plex/config:/config
       - ${MEDIA_PATH}/tv:/tv
@@ -22,10 +19,8 @@ services:
     image: lscr.io/linuxserver/transmission
     container_name: transmission
     restart: unless-stopped
-    environment:
-      - PGID=${GID}
-      - PUID=${UID}
-      - TZ=America/Chicago
+    env_file:
+      - ./base.env
     volumes:
       - ./transmission/config:/config
       - ${MEDIA_PATH}/transmission:/data/transmission
@@ -39,10 +34,8 @@ services:
     image: lscr.io/linuxserver/sabnzbd
     container_name: sabnzbd
     restart: unless-stopped
-    environment:
-      - PGID=${GID}
-      - PUID=${UID}
-      - TZ=America/Chicago
+    env_file:
+      - ./base.env
     volumes:
       - ./sabnzbd/config:/config
       - ${MEDIA_PATH}/usenet:/data/usenet
@@ -53,10 +46,8 @@ services:
     image: lscr.io/linuxserver/prowlarr:develop
     container_name: prowlarr
     restart: unless-stopped
-    environment:
-      - PGID=${GID}
-      - PUID=${UID}
-      - TZ=America/Chicago
+    env_file:
+      - ./base.env
     volumes:
       - ./prowlarr/config:/config
     ports:
@@ -68,10 +59,8 @@ services:
     restart: unless-stopped
     depends_on:
       - transmission
-    environment:
-      - PGID=${GID}
-      - PUID=${UID}
-      - TZ=America/Chicago
+    env_file:
+      - ./base.env
     volumes:
       - ./sonarr/config:/config
       - ${MEDIA_PATH}:/data
@@ -86,10 +75,8 @@ services:
     restart: unless-stopped
     depends_on:
       - transmission
-    environment:
-      - PGID=${GID}
-      - PUID=${UID}
-      - TZ=America/Chicago
+    env_file:
+      - ./base.env
     volumes:
       - ./radarr/config:/config
       - ${MEDIA_PATH}:/data
@@ -101,10 +88,8 @@ services:
   kavita:
     image: jvmilazz0/kavita
     container_name: kavita
-    environment:
-      - PGID=${GID}
-      - PUID=${UID}
-      - TZ=America/Chicago
+    env_file:
+      - ./base.env
     volumes:
       - ${MEDIA_PATH}/comics:/comics
       - ./kavita/config:/kavita/config
@@ -115,10 +100,8 @@ services:
   mylar:
     image: lscr.io/linuxserver/mylar3
     container_name: mylar
-    environment:
-      - PUID=${UID}
-      - PGID=${GID}
-      - TZ=America/Chicago
+    env_file:
+      - ./base.env
     volumes:
       - ./mylar/config:/config
       - ${MEDIA_PATH}:/data
@@ -132,18 +115,9 @@ services:
     container_name: doplarr
     restart: unless-stopped
     network_mode: host
-    environment:
-      - PGID=${GID}
-      - PUID=${UID}
-      - TZ=America/Chicago
-      - DISCORD__TOKEN=${DISCORD_TOKEN}
-      - RADARR__API=${RADARR_API}
-      - RADARR__URL=https://internal.${HOST}/movies
-      - SONARR__API=${SONARR_API}
-      - SONARR__URL=https://internal.${HOST}/tv
-      - DISCORD__REQUESTED_MSG_STYLE=:embed
-      - SONARR__QUALITY_PROFILE=Best
-      - RADARR__QUALITY_PROFILE=Best
+    env_file:
+      - ./base.env
+      - ./doplarr/doplarr.env
     volumes:
       - ./doplarr/config:/config
 
@@ -151,10 +125,12 @@ services:
     image: ghcr.io/flaresolverr/flaresolverr
     container_name: flaresolverr
     environment:
+      - PGID=${GID}
+      - UID=${UID}
+      - TZ=${TZ}
       - LOG_LEVEL=${LOG_LEVEL:-info}
       - LOG_HTML=${LOG_HTML:-false}
       - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
-      - TZ=America/Chicago
     ports:
       - 8191:8191
     restart: unless-stopped
@@ -163,15 +139,9 @@ services:
     image: lscr.io/linuxserver/swag
     container_name: swag
     restart: unless-stopped
-    environment:
-      PUID: ${UID}
-      PGID: ${GID}
-      TZ: America/Chicago
-      URL: ${HOST}
-      SUBDOMAINS: wildcard
-      VALIDATION: dns
-      DNSPLUGIN: cloudflare
-      CERTPROVIDER: letsencrypt
+    env_file:
+      - ./base.env
+      - ./swag/swag.env
     ports:
       - 80:80
       - 443:443
